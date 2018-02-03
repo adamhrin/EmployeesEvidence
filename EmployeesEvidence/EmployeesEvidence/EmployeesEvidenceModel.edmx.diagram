@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="684784bd41c446bbb7c694000cf062b8" Name="Diagram1" ZoomLevel="73">
+        <EntityTypeShape EntityType="EmployeesDbModel.Company" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeesDbModel.Department" Width="1.5" PointX="9.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeesDbModel.Division" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeesDbModel.Employee" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeesDbModel.Project" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="EmployeesDbModel.FK_company_employee" ManuallyRouted="false" />
+        <AssociationConnector Association="EmployeesDbModel.FK_division_company" ManuallyRouted="false" />
+        <AssociationConnector Association="EmployeesDbModel.FK_department_employee" ManuallyRouted="false" />
+        <AssociationConnector Association="EmployeesDbModel.FK_department_project" ManuallyRouted="false" />
+        <AssociationConnector Association="EmployeesDbModel.FK_employee_department" ManuallyRouted="false" />
+        <AssociationConnector Association="EmployeesDbModel.FK_division_employee" ManuallyRouted="false" />
+        <AssociationConnector Association="EmployeesDbModel.FK_project_division" ManuallyRouted="false" />
+        <AssociationConnector Association="EmployeesDbModel.FK_project_employee" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

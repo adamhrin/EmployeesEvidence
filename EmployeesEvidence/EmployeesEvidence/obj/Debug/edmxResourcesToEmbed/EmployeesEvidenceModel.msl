@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EmployeesDbModelStoreContainer" CdmEntityContainer="EmployeesDbEntities1">
+    <EntitySetMapping Name="Companies">
+      <EntityTypeMapping TypeName="EmployeesDbModel.Company">
+        <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="id_company" ColumnName="id_company" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id_head" ColumnName="id_head" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departments">
+      <EntityTypeMapping TypeName="EmployeesDbModel.Department">
+        <MappingFragment StoreEntitySet="Department">
+          <ScalarProperty Name="id_department" ColumnName="id_department" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id_head" ColumnName="id_head" />
+          <ScalarProperty Name="id_project" ColumnName="id_project" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Divisions">
+      <EntityTypeMapping TypeName="EmployeesDbModel.Division">
+        <MappingFragment StoreEntitySet="Division">
+          <ScalarProperty Name="id_division" ColumnName="id_division" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id_head" ColumnName="id_head" />
+          <ScalarProperty Name="id_company" ColumnName="id_company" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="EmployeesDbModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="id_employee" ColumnName="id_employee" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="id_department" ColumnName="id_department" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="EmployeesDbModel.Project">
+        <MappingFragment StoreEntitySet="Project">
+          <ScalarProperty Name="id_project" ColumnName="id_project" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id_head" ColumnName="id_head" />
+          <ScalarProperty Name="id_division" ColumnName="id_division" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmployeesDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="id_company" />
+    </Key>
+    <Property Name="id_company" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="id_head" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_company_employee" FromRole="Company" ToRole="Employee" />
+    <NavigationProperty Name="Divisions" Relationship="Self.FK_division_company" FromRole="Company" ToRole="Division" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="id_department" />
+    </Key>
+    <Property Name="id_department" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="id_head" Type="Int32" Nullable="false" />
+    <Property Name="id_project" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_department_employee" FromRole="Department" ToRole="Employee" />
+    <NavigationProperty Name="Project" Relationship="Self.FK_department_project" FromRole="Department" ToRole="Project" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK_employee_department" FromRole="Department" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Division">
+    <Key>
+      <PropertyRef Name="id_division" />
+    </Key>
+    <Property Name="id_division" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="id_head" Type="Int32" Nullable="false" />
+    <Property Name="id_company" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Company" Relationship="Self.FK_division_company" FromRole="Division" ToRole="Company" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_division_employee" FromRole="Division" ToRole="Employee" />
+    <NavigationProperty Name="Projects" Relationship="Self.FK_project_division" FromRole="Division" ToRole="Project" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="id_employee" />
+    </Key>
+    <Property Name="id_employee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="firstname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="surname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="phone" Type="Int32" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="id_department" Type="Int32" />
+    <NavigationProperty Name="Companies" Relationship="Self.FK_company_employee" FromRole="Employee" ToRole="Company" />
+    <NavigationProperty Name="Departments" Relationship="Self.FK_department_employee" FromRole="Employee" ToRole="Department" />
+    <NavigationProperty Name="Department" Relationship="Self.FK_employee_department" FromRole="Employee" ToRole="Department" />
+    <NavigationProperty Name="Divisions" Relationship="Self.FK_division_employee" FromRole="Employee" ToRole="Division" />
+    <NavigationProperty Name="Projects" Relationship="Self.FK_project_employee" FromRole="Employee" ToRole="Project" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="id_project" />
+    </Key>
+    <Property Name="id_project" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="id_head" Type="Int32" Nullable="false" />
+    <Property Name="id_division" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Departments" Relationship="Self.FK_department_project" FromRole="Project" ToRole="Department" />
+    <NavigationProperty Name="Division" Relationship="Self.FK_project_division" FromRole="Project" ToRole="Division" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_project_employee" FromRole="Project" ToRole="Employee" />
+  </EntityType>
+  <Association Name="FK_company_employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Company" Type="Self.Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="id_employee" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="id_head" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_division_company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="Division" Type="Self.Division" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="id_company" />
+      </Principal>
+      <Dependent Role="Division">
+        <PropertyRef Name="id_company" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_department_employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Department" Type="Self.Department" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="id_employee" />
+      </Principal>
+      <Dependent Role="Department">
+        <PropertyRef Name="id_head" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_department_project">
+    <End Role="Project" Type="Self.Project" Multiplicity="1" />
+    <End Role="Department" Type="Self.Department" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="id_project" />
+      </Principal>
+      <Dependent Role="Department">
+        <PropertyRef Name="id_project" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_employee_department">
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="id_department" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="id_department" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_division_employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Division" Type="Self.Division" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="id_employee" />
+      </Principal>
+      <Dependent Role="Division">
+        <PropertyRef Name="id_head" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_project_division">
+    <End Role="Division" Type="Self.Division" Multiplicity="1" />
+    <End Role="Project" Type="Self.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Division">
+        <PropertyRef Name="id_division" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="id_division" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_project_employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Project" Type="Self.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="id_employee" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="id_head" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EmployeesDbEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Companies" EntityType="Self.Company" />
+    <EntitySet Name="Departments" EntityType="Self.Department" />
+    <EntitySet Name="Divisions" EntityType="Self.Division" />
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="Projects" EntityType="Self.Project" />
+    <AssociationSet Name="FK_company_employee" Association="Self.FK_company_employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Company" EntitySet="Companies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_division_company" Association="Self.FK_division_company">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="Division" EntitySet="Divisions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_department_employee" Association="Self.FK_department_employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Department" EntitySet="Departments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_department_project" Association="Self.FK_department_project">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="Department" EntitySet="Departments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_employee_department" Association="Self.FK_employee_department">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_division_employee" Association="Self.FK_division_employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Division" EntitySet="Divisions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_project_division" Association="Self.FK_project_division">
+      <End Role="Division" EntitySet="Divisions" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_project_employee" Association="Self.FK_project_employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

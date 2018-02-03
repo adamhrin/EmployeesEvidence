@@ -1,0 +1,14 @@
+C:\Users\Adam\source\repos\EmployeesEvidence\EmployeesEvidence\bin\Debug\EmployeesEvidence.exe.config
+C:\Users\Adam\source\repos\EmployeesEvidence\EmployeesEvidence\bin\Debug\EmployeesEvidence.exe
+C:\Users\Adam\source\repos\EmployeesEvidence\EmployeesEvidence\bin\Debug\EmployeesEvidence.pdb
+C:\Users\Adam\source\repos\EmployeesEvidence\EmployeesEvidence\obj\Debug\EmployeesEvidence.csprojResolveAssemblyReference.cache
+C:\Users\Adam\source\repos\EmployeesEvidence\EmployeesEvidence\obj\Debug\EmployeesEvidence.Properties.Resources.resources
+C:\Users\Adam\source\repos\EmployeesEvidence\EmployeesEvidence\obj\Debug\EmployeesEvidence.csproj.GenerateResource.Cache
+C:\Users\Adam\source\repos\EmployeesEvidence\EmployeesEvidence\obj\Debug\EmployeesEvidence.csproj.CoreCompileInputs.cache
+C:\Users\Adam\source\repos\EmployeesEvidence\EmployeesEvidence\obj\Debug\EmployeesEvidence.exe
+C:\Users\Adam\source\repos\EmployeesEvidence\EmployeesEvidence\obj\Debug\EmployeesEvidence.pdb
+C:\Users\Adam\source\repos\EmployeesEvidence\EmployeesEvidence\bin\Debug\EntityFramework.dll
+C:\Users\Adam\source\repos\EmployeesEvidence\EmployeesEvidence\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Adam\source\repos\EmployeesEvidence\EmployeesEvidence\bin\Debug\EntityFramework.xml
+C:\Users\Adam\source\repos\EmployeesEvidence\EmployeesEvidence\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Adam\source\repos\EmployeesEvidence\EmployeesEvidence\obj\Debug\EmployeesEvidence.Form1.resources
